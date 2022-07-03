@@ -1,0 +1,233 @@
+:root{
+    --primary-color: dodgerblue;
+    --font-color:white;
+}
+html{
+    box-sizing: border-box;
+}
+body{
+    margin:0;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+    background-color: #fbf3da;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='Artboard-5' fill='%23f7deaa' fill-opacity='0.42' fill-rule='nonzero'%3E%3Cpath d='M6 18h12V6H6v12zM4 4h16v16H4V4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.player{
+    min-width:800px;
+    max-width:80vw;
+    border-radius: 10px;
+    border: 5px solid black;
+    background: black;
+    position:relative;
+    cursor: pointer;
+}
+.fa-solid{
+    color: var(--font-color);
+    font-size: 35px;
+}
+.video{
+    width:100%;
+    height:auto;
+    border-radius: 5px;
+}
+.show-controls{
+    width:100%;
+    height:30%;
+    z-index: 2;
+    position:absolute;
+    bottom:0;
+}
+.control-container{
+    position:absolute;
+    bottom:-5px;
+    width:100%;
+    height:95px;
+    margin-top:-95px;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,0.5);
+    z-index:5;
+    display: flex;
+    justify-content: space-between;
+    opacity:0;
+    transition: all 0.9s ease-in 2s;
+}
+.show-controls:hover .control-container{
+    opacity: 1;
+    transition: all 0.4s ease-in;
+}
+.progress-range{
+    height:6px;
+    width:calc(100% - 30px);;
+    background-color: rgba(163, 162, 162, 0.5);
+    margin:auto;
+    border-radius: 10px;
+    position:absolute;
+    left:15px;
+    top:15px;
+    cursor:pointer;
+    transition: height 0.2s ease;
+}
+.progress-range:hover{
+    height:8px;
+}
+.progress-bar{
+    background: var(--primary-color);
+    width:'20%';
+    height:100%;
+    border-radius: 10px;
+}
+.control-group{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: space-between;
+}
+.controls-left,
+.controls-right {
+    flex:1;
+    display: flex;
+    overflow:hidden;
+    position:relative;
+    top:40px;
+}
+.controls-left{
+    justify-content: flex-start;
+    margin-left:15px;
+}
+.play-controls{
+    margin-right:15px;
+}
+.fa-play:hover,
+.fa-pause:hover {
+    color: var(--primary-color);
+    cursor:pointer;
+}
+.volume-icon{
+    cursor:pointer;
+}
+.volume-range{
+    height:8px;
+    width:80px;
+    background-color: rgba(44, 43, 43, 0.5);
+    border-radius: 10px;
+    position:relative;
+    top:-21px;
+    left:50px;
+}
+.volume-bar{
+    height:100%;
+    width:100%;
+    background:var(--font-color);
+    border-radius: 10px;
+    transition: width 0.2s ease-in;
+}
+.volume-bar:hover{
+    background:var(--primary-color);
+}
+.controls-right{
+    justify-content: flex-end;
+    margin-right:15px;
+}
+.speed,
+.time{
+    position:relative;
+    top:10px;
+}
+.speed{
+    margin-right: 15px;
+}
+select{
+    background:transparent;
+    border:none;
+    color:var(--font-color);
+    font-size: 18px;
+    position:relative;
+    top:-2.5px;
+    border-radius: 5px;
+}
+select > option{
+    background-color: rgba(88, 88, 88, 0.9);
+    border:none;
+    font-size:14px;
+}
+select,
+option{
+    cursor: pointer;
+}
+select:focus{
+    outline:none;
+}
+.time{
+    margin-right: 15px;
+    font-weight: bold;
+    color:var(--font-color);
+    user-select: none;
+}
+.full-screen{
+    cursor: pointer;
+}
+.video-full-screen{
+    position: relative;
+    top:50%;
+    transform: translateY(-50%);
+}
+@media screen and (max-width:600px){
+    .player{
+        min-width: 0;
+        max-width: 85vw;
+    }
+    .fa-solid{
+        font-size: 20px;
+    }
+    .control-container{
+        height:50px;
+    }
+    .control-group{
+        position: relative;
+        top:-25px;
+    }
+    .progress-range{
+        width:100%;
+        top:0;
+        left:0;
+        border-radius: 0px;
+    }
+    .progress-bar{
+        border-radius: 0;
+    }
+    .volume-range {
+        width: 50px;
+        left: 30px;
+        top: -15px;
+      }
+    
+      .speed,
+      .time {
+        top: 3px;
+      }
+    
+      select {
+        font-size: 10px;
+      }
+    
+      .time {
+        font-size: 11px;
+      }
+}
+@media screen and (max-width: 900px) and (max-height: 500px) {
+    .player {
+      max-height: 95vh;
+      max-width: auto;
+    }
+  
+    video {
+      height: 95vh;
+      object-fit: cover;
+    }
+  
+    .video-full-screen {
+      height: 97.5vh;
+      border-radius: 0;
+    }
+  }
